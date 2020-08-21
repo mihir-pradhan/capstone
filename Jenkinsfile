@@ -8,7 +8,7 @@ pipeline {
          }
          stage('Build image') {
               steps {
-       		 sh 'sudo ./run_docker.sh'
+       		 sh './run_docker.sh'
               }
          }
          stage('Push image') {
