@@ -1,24 +1,27 @@
-pipeline{
-agent any
-stages{
-stage('Linting') {
-   steps {
-       sh 'hadolint Dockerfile'
-         }	
-}
-stage('Build image') {
-   steps {
-       sh './run_docker.sh'
+pipeline {
+     agent any
+     stages {
+         stage('Linting') {
+             steps {
+       		 sh 'hadolint Dockerfile'
+             }
          }
-}
-stage(Push image') {
-   steps {
-       sh './upload_docker.sh'
+         stage('Build image') {
+              steps {
+       		 sh './run_docker.sh'
+              }
          }
-}
-stage('set current kubectl context') {
-}
-stage('Deploy container') {
-}
-}
+         stage('Push image') {
+              steps {
+              }
+         }
+         stage('set current kubectl context') {
+              steps {
+              }
+         }
+         stage('Deploy container') {
+              steps {
+              }
+         }
+     }
 }
