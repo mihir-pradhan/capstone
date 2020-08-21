@@ -13,14 +13,7 @@ pipeline {
          }
          stage('Push image') {
               steps {
-              }
-         }
-         stage('set current kubectl context') {
-              steps {
-              }
-         }
-         stage('Deploy container') {
-              steps {
+                 sh './upload_docker.sh'
               }
          }
      }
