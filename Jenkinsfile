@@ -29,14 +29,14 @@ pipeline {
          }
          stage('Check credentials') {
              steps {
-		 withAWS(region:'us-east-1',credentials:'aws-static') {
+		 withAWS(region:'us-east-1',credentials:'mihpradh') {
                  sh 'aws sts get-caller-identity'
 		 }
              }
          }
          stage('Create Kubernetes cluster in EKS') {
              steps {
-		 withAWS(region:'us-east-1',credentials:'aws-static') {
+		 withAWS(region:'us-east-1',credentials:'mihpradh') {
                  sh '''
                      eksctl create cluster \
                      --name website \
