@@ -27,6 +27,11 @@ pipeline {
                   }
               }
          }
+         stage('Check credentials') {
+             steps {
+                 sh 'aws sts get-caller-identity'
+             }
+         }
          stage('Create Kubernetes cluster in EKS') {
              steps {
                  sh '''
