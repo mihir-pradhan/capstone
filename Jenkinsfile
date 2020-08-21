@@ -26,6 +26,7 @@ pipeline {
 	       	      }
                   }
               }
+         }
          stage('Create Kubernetes cluster in EKS') {
              steps {
                  sh '''
@@ -43,7 +44,6 @@ pipeline {
                      --managed
                  ''' 
              }
-         }
          }
      }
 }
