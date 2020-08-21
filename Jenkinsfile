@@ -1,3 +1,6 @@
+pipeline{
+agent any
+stages{
 stage('Linting') {
    steps {
        sh 'hadolint Dockerfile'
@@ -16,4 +19,6 @@ stage(Push image') {
 stage('set current kubectl context') {
 }
 stage('Deploy container') {
+}
+}
 }
