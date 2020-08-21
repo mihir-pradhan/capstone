@@ -22,6 +22,7 @@ pipeline {
               steps {
                  docker.withRegistry( '', registryCredential ) { 
                  dockerImage.push() 
+		 }
               }
          }
      }
