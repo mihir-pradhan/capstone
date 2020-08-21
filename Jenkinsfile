@@ -4,9 +4,7 @@ pipeline {
     	registryCredential = 'dockerhub'
 	dockerImage = ''
      }
-     agent {
-	dockerfile true
-     }
+     agent any
      stages {
          stage('Linting') {
              steps {
@@ -15,7 +13,7 @@ pipeline {
          }
          stage('Build image') {
               steps {
-		 dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                 dockerImage = docker.build registry + ":$BUILD_NUMBER"
               }
          }
          stage('Push image') {
