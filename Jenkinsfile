@@ -1,5 +1,12 @@
 pipeline {
-     agent any
+     environment {
+    	registry = "mihirpradhan/website"
+    	registryCredential = 'dockerhub'
+	dockerImage = ''
+     }
+     agent {
+	dockerfile true
+     }
      stages {
          stage('Linting') {
              steps {
@@ -8,12 +15,13 @@ pipeline {
          }
          stage('Build image') {
               steps {
-       		 sh './run_docker.sh'
+		 dockerImage = docker.build registry + ":$BUILD_NUMBER"
               }
          }
          stage('Push image') {
               steps {
-                 sh './upload_docker.sh'
+                 docker.withRegistry( '', registryCredential ) { 
+                 dockerImage.push() 
               }
          }
      }
