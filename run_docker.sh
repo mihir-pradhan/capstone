@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo chmod 666 /var/run/docker.sock
+chmod 666 /var/run/docker.sock
 
 ## Complete the following steps to get Docker running locally
 
