@@ -1,4 +1,4 @@
-stage(‘Linting') {
+stage('Linting') {
    steps {
        sh 'hadolint Dockerfile'
          }	
