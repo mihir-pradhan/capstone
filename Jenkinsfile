@@ -38,7 +38,7 @@ pipeline {
              steps {
                 withAWS(region:'us-east-1',credentials:'mihpradh') {
                    sh '''
-                   eksctl create cluster
+                   eksctl create cluster \
                    --name website \
                    --version 1.17 \
                    --region us-east-1 \
