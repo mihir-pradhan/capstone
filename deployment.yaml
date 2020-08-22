@@ -21,7 +21,7 @@ spec:
         app: website
     spec:
       containers:
-      - image: mihirpradhan/website
+      - image: mihirpradhan/website:v1
         imagePullPolicy: Always
         name: website
         ports:
