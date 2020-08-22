@@ -36,7 +36,9 @@ pipeline {
          }
         stage('Apply Kube config') {
              steps {
+                 withAWS(region:'us-east-1',credentials:'mihpradh') {
                  sh '/home/ubuntu/run_kubernetes.sh'
+                 }
              }
          }
      }
