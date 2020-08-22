@@ -14,7 +14,7 @@ pipeline {
          stage('Build image') {
               steps {
                    script {
-                      dockerImage = docker.build registry + ":v1"
+                      dockerImage = docker.build registry + ":$BUILD_NUMBER"
                    }
               }
          }
@@ -37,7 +37,7 @@ pipeline {
         stage('Apply Kube config') {
              steps {
                  withAWS(region:'us-east-1',credentials:'mihpradh') {
-                 sh '/home/ubuntu/run_kubernetes.sh'
+                 sh '/home/ubuntu/run_kubernetes.sh $BUILD_NUMBER'
                  }
              }
          }
