@@ -36,26 +36,28 @@ pipeline {
          }
          stage('Create Kubernetes cluster in EKS') {
              steps {
-		 try {
-		   withAWS(region:'us-east-1',credentials:'mihpradh') {
-                    sh '''
-                        eksctl create cluster \
-                        --name website \
-                        --version 1.17 \
-                        --region us-east-1 \
-                        --nodegroup-name website-nodes \
-                        --node-type t2.micro \
-                        --nodes 3 \
-                        --nodes-min 1 \
-                        --nodes-max 4 \
-                        --ssh-access \
-                        --ssh-public-key /home/ubuntu/capstone.pub \
-                        --managed
-                    ''' 
-                    }
-		 } catch (err) {
+		script {
+  	  	    try {
+		      withAWS(region:'us-east-1',credentials:'mihpradh') {
+                       sh '''
+                           eksctl create cluster \
+                           --name website \
+                           --version 1.17 \
+                           --region us-east-1 \
+                           --nodegroup-name website-nodes \
+                           --node-type t2.micro \
+                           --nodes 3 \
+                           --nodes-min 1 \
+                           --nodes-max 4 \
+                           --ssh-access \
+                           --ssh-public-key /home/ubuntu/capstone.pub \
+                           --managed
+                       ''' 
+                       }
+		    } catch (err) {
                       echo err
-                 }
+                    }
+		 }
                  echo currentBuild.result
              }
          }
